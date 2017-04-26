@@ -6,7 +6,7 @@
 **     Version     : Component 01.110, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-04-25, 10:25, # CodeGen: 2
+**     Date/Time   : 2017-04-26, 17:38, # CodeGen: 12
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -61,7 +61,7 @@
 #define MQX_USE_SEMAPHORES             1
 #define MQX_USE_LWEVENTS               1
 #define MQX_USE_MUTEXES                0
-#define MQX_USE_LWMSGQ                 0
+#define MQX_USE_LWMSGQ                 1
 #define MQX_USE_LWTIMER                0
 #define MQX_KERNEL_LOGGING             0
 

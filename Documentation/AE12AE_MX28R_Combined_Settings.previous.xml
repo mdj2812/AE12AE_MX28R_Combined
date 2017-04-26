@@ -454,7 +454,7 @@
               <Name v="MX28R_Set_Task" />
               <Entry_point_function v="MX28R_Set_task" />
               <Stack_size v="512" />
-              <Priority v="8" />
+              <Priority v="9" />
               <Creation_parameter v="0" />
               <group name="Attributes">
                 <MQX_AUTO_START_TASK v="Enabled" />
@@ -480,7 +480,7 @@
               <Name v="AE12AE_Demade_Task" />
               <Entry_point_function v="AE12AE_Demade_task" />
               <Stack_size v="512" />
-              <Priority v="9" />
+              <Priority v="8" />
               <Creation_parameter v="0" />
               <group name="Attributes">
                 <MQX_AUTO_START_TASK v="Enabled" />
@@ -503,7 +503,7 @@
         <group name="Components">
           <Lightweight_Semaphores v="yes" />
           <Lightweight_Events v="yes" />
-          <Lightweight_Message_Queues v="no" />
+          <Lightweight_Message_Queues v="yes" />
           <Mutexes v="no" />
           <Lightweight_Timer v="no" />
           <Kernel_Logging v="no" />

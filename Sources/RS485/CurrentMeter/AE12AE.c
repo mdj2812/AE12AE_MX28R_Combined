@@ -5,17 +5,140 @@
  *      Author: MA
  */
 
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include "AE12AE.h"
-#include "string.h"
-#include "RS485_DE.h"
-#include "RS485_RE.h"
-#include "RS485_UART.h"
-#include "Events.h"
 #include "RS485_Driver.h"
 #include "SEGGER_RTT.h"
 #include "stdio.h"
 
-void crrntMtr_GetCheckSum(uint8_t * array) {
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+#define RESPONSE_BUFFER_SEIZE	(uint8_t)(20)
+
+#define AE12AE_HEADER			(uint8_t)(0x2A)
+#define AE12AE_ID				(uint8_t)(0x04)
+
+/*******************************************************************************
+ * Variables
+ ******************************************************************************/
+static uint8_t AE12AE_Response[RESPONSE_BUFFER_SEIZE];
+static uint16_t AE12AE_Response_Cursor = 0;
+static uint8_t AE12AE_TxData[20];
+
+/*******************************************************************************
+ * Internal function declaration
+ ******************************************************************************/
+static void AE12AE_GetCheckSum(uint8_t * array);
+static RS485ErrorType AE12AE_Read(uint8_t * Value);
+static RS485ErrorType AE12AE_Write(uint8_t StartAddr, uint8_t Value);
+
+/*******************************************************************************
+ * Public function
+ ******************************************************************************/
+boolean AE12AE_Init() {
+  LDD_TDeviceData* ALIM_12V_RLY_Ptr;
+
+  ALIM_12V_RLY_Ptr = ALIM_12V_RLY_Init(NULL);
+
+  while(AE12AE_Read(&AE12AE_Response[AE12AE_Response_Cursor]) != RS485_OK) {
+	  ALIM_12V_RLY_ClrVal(ALIM_12V_RLY_Ptr);
+	  RTOS_DELAY_TICKS(100);
+	  ALIM_12V_RLY_SetVal(ALIM_12V_RLY_Ptr);
+	  RTOS_DELAY_TICKS(10);
+
+	  // Pass to mode 1
+	  AE12AE_Write(0xD0, 0x01);
+	  RTOS_DELAY_TICKS(10);
+	  AE12AE_Write(0xD0, 0x08);
+	  RTOS_DELAY_TICKS(10);
+	  // Auto-calibration
+	  AE12AE_Write(0xD0, 0x02);
+	  RTOS_DELAY_TICKS(10);
+  }
+
+  return TRUE;
+}
+
+void AE12AE_task() {
+  int counter = 0;
+  uint16_t i = 0;
+  uint16_t value = 0;
+  char str[15];
+
+  while(1) {
+	/* Write your code here ... */
+	AE12AE_Read(&AE12AE_Response[AE12AE_Response_Cursor]);
+#ifdef DEBUG
+	value = (AE12AE_Response[2]<<8 | AE12AE_Response[3]);
+	sprintf(str, "%d\n", value);
+	SEGGER_RTT_WriteString(0, str);
+#endif
+	RTOS_DELAY_TICKS(200);
+  }
+}
+
+RS485FrameStateType AE12AE_FrameComposer(uint8_t AE12AERcvChar) {
+  RS485FrameStateType ret = RS485_Frame_WORKING;
+  static uint8_t i = 0;
+  static uint16_t checksum = 0;
+  static uint8_t id = 0;
+  static uint8_t mesure_MSB = 0;
+  static uint8_t mesure_LSB = 0;
+  static AE12AE_HeaderState HeaderState = AE12AE_COMM_HEADER_NOT_DETECTED;
+
+  switch (HeaderState) {
+  case AE12AE_COMM_HEADER_NOT_DETECTED:
+	if (AE12AERcvChar == AE12AE_HEADER) {
+	  HeaderState = AE12AE_COMM_HEADER_DETECTED;
+	  checksum += AE12AERcvChar;           //calculate checksum
+	  AE12AE_Response[i] = AE12AERcvChar;
+	  i++;                        //number of valid byte received
+	}
+	break;
+  case AE12AE_COMM_HEADER_DETECTED:
+	AE12AE_Response[i] = AE12AERcvChar;
+	i++;                        //number of valid byte received
+	switch (i) {
+	case 2:     //ID
+	  id = AE12AERcvChar;
+	  break;
+	case 3:     // MSB mesure
+	  mesure_MSB = AE12AERcvChar;              //get mesure MSB
+	  break;
+	case 4:     // LSB mesure
+	  mesure_LSB = AE12AERcvChar;
+	  break;
+	default:
+		if(i == 5) {
+			checksum = (AE12AE_HEADER + id + mesure_MSB + mesure_LSB) & 0xFF; //calculate checksum
+			/* Clear the value prepare to next receive*/
+			if(checksum == AE12AERcvChar) {
+				ret = RS485_Frame_DONE;
+			} else if((AE12AERcvChar == 0x2A) && ((AE12AE_HEADER + id + mesure_MSB) & 0xFF) == mesure_LSB) {
+				ret = RS485_Frame_ERR_MODE;
+			} else {
+				ret = RS485_Frame_ERR;
+			}
+		} else {
+			ret = RS485_Frame_ERR_MODE;
+		}
+		i = 0;
+		checksum = 0;
+		HeaderState = AE12AE_COMM_HEADER_NOT_DETECTED;
+	  break;
+	}
+	break;
+  }
+  return ret;
+}
+
+/*******************************************************************************
+ * Internal function
+ ******************************************************************************/
+static void AE12AE_GetCheckSum(uint8_t * array) {
   uint8_t* ptr = array;
   uint8_t i = 0;
   uint16_t sum = 0;
@@ -25,118 +148,34 @@ void crrntMtr_GetCheckSum(uint8_t * array) {
   *ptr = sum & 0xff;
 }
 
-uint8_t crrntMtr_Read(uint8_t id, uint8_t * Value) {
+static RS485ErrorType AE12AE_Read(uint8_t * Value) {
+  RS485ErrorType ret;
   uint8_t i;
-  TxData[0] = 0x2A;
-  TxData[1] = id;
-  TxData[2] = 0xD0;
-  TxData[3] = 0x04; //Acquisition of measurement
-  crrntMtr_GetCheckSum(TxData);
-  RS485_Write(TxData, 5U, RS485_User_CM);
 
-  if(RS485_WaitForResponse(100) == RS485_OK) {
+  AE12AE_TxData[0] = AE12AE_HEADER;
+  AE12AE_TxData[1] = AE12AE_ID;
+  AE12AE_TxData[2] = 0xD0;
+  AE12AE_TxData[3] = 0x04; //Acquisition of measurement
+  AE12AE_GetCheckSum(AE12AE_TxData);
+  RS485_Write(AE12AE_TxData, 5U, RS485_User_CM);
+
+  ret = RS485_WaitForResponse(100);
+  if(ret == RS485_OK) {
     for(i = 0; i < 5; i++) {
-      *(Value + i) = crrntMtr_Response[i];
+      *(Value + i) = AE12AE_Response[i];
     }
-    return 1;
-  } else {
-    return 0;
   }
+
+  return ret;
 }
 
-uint8_t crrntMtr_Write(uint8_t id, uint8_t StartAddr, uint8_t Value) {
+static RS485ErrorType AE12AE_Write(uint8_t StartAddr, uint8_t Value) {
   uint8_t i = 0;
-  TxData[0] = 0x2A;
-  TxData[1] = id;
-  TxData[2] = StartAddr;
-  TxData[3] = Value;
-  crrntMtr_GetCheckSum(TxData);
-  RS485_Write(TxData, 5U, RS485_User_CM);
+  AE12AE_TxData[0] = AE12AE_HEADER;
+  AE12AE_TxData[1] = AE12AE_ID;
+  AE12AE_TxData[2] = StartAddr;
+  AE12AE_TxData[3] = Value;
+  AE12AE_GetCheckSum(AE12AE_TxData);
 
-  return 1;
-}
-
-RS485FrameStateType crrntMtr_FrameComposer(uint8_t crrntMtrRcvChar) {
-  static uint8_t i = 0;
-  static uint16_t checksum = 0;
-  static uint8_t id = 0;
-  static uint8_t mesure_MSB = 0;
-  static uint8_t mesure_LSB = 0;
-  static CrrntMtr_HeaderState HeaderState = CRRNTMTR_COMM_HEADER_NOT_DETECTED;
-  switch (HeaderState) {
-  case CRRNTMTR_COMM_HEADER_NOT_DETECTED:
-	if (crrntMtrRcvChar == 0x2A) {
-	  HeaderState = CRRNTMTR_COMM_HEADER_DETECTED;
-	  checksum += crrntMtrRcvChar;           //calculate checksum
-	  crrntMtr_Response[i] = crrntMtrRcvChar;
-	  i++;                        //number of valid byte received
-	}
-	break;
-  case CRRNTMTR_COMM_HEADER_DETECTED:
-	crrntMtr_Response[i] = crrntMtrRcvChar;
-	i++;                        //number of valid byte received
-	switch (i) {
-	case 2:     //ID
-	  id = crrntMtrRcvChar;
-	  break;
-	case 3:     // MSB mesure
-	  mesure_MSB = crrntMtrRcvChar;              //get mesure MSB
-	  break;
-	case 4:     // LSB mesure
-	  mesure_LSB = crrntMtrRcvChar;
-	  break;
-	case 5:
-		checksum = (0x2A + id + mesure_MSB + mesure_LSB) & 0xFF; //calculate checksum
-		/* Clear the value prepare to next receive*/
-		if(checksum == crrntMtrRcvChar) {
-			i = 0;
-			checksum = 0;
-			HeaderState = CRRNTMTR_COMM_HEADER_NOT_DETECTED;
-
-			return RS485_Frame_DONE;
-		} else {
-			i = 0;
-			checksum = 0;
-			HeaderState = CRRNTMTR_COMM_HEADER_NOT_DETECTED;
-
-			return RS485_Frame_ERR;
-		}
-		break;
-	default:
-	  break;
-	}
-	break;
-  }
-  return RS485_Frame_WORKING;
-}
-
-void CurrentMeter_task() {
-  int counter = 0;
-  uint16_t i = 0;
-  uint16_t value = 0;
-  static uint8_t RX_Buffer[200];
-  static uint16_t RX_Cursor = 0;
-  char str[15];
-
-  for(i = 0; i<200; i++) {
-	  RX_Buffer[i] = 0;
-  }
-
-  crrntMtr_Write(0x04, 0xD0, 0x01);
-  _time_delay_ticks(10);
-  crrntMtr_Write(0x04, 0xD0, 0x08);
-  _time_delay_ticks(10);
-  crrntMtr_Write(0x04, 0xD0, 0x02);
-  _time_delay_ticks(10);
-
-  while(1) {
-	/* Write your code here ... */
-	crrntMtr_Read(0x04, &RX_Buffer[RX_Cursor]);
-#ifdef DEBUG
-	value = (RX_Buffer[2]<<8 | RX_Buffer[3]);
-	sprintf(str, "%d\n", value);
-	SEGGER_RTT_WriteString(0, str);
-#endif
-	_time_delay_ticks(200);
-  }
+  return RS485_Write(AE12AE_TxData, 5U, RS485_User_CM);
 }

@@ -36,6 +36,7 @@ Static_Code/System/CPU_Init.o: ../Static_Code/System/CPU_Init.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwsem.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwevent.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cnfg.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwmsgq.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpudef.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cpudef.h \
@@ -128,6 +129,8 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwsem.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwevent.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cnfg.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwmsgq.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h:
 

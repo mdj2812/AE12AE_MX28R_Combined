@@ -78,7 +78,11 @@ void MX28R_Set_task(uint32_t task_init_data)
 void AE12AE_Demade_task(uint32_t task_init_data)
 {
 	/* Write your code here ... */
-	CurrentMeter_task();
+    RS485_Init();
+    if(AE12AE_Init()) {
+    	_task_id MX28R_set_Task_Id = _task_create_at(0, MX28R_SET_TASK_TASK, 0, MX28R_Set_Task_task_stack, MX28R_SET_TASK_TASK_STACK_SIZE);
+    }
+	AE12AE_task();
 }
 
 /* END mqx_tasks */

@@ -31,20 +31,28 @@ static uint8_t RS485RcvChar;
 
 /******** Internal function declaration ********/
 
-static inline void RS485_Send(uint8_t* data, uint8_t len);
+static inline RS485ErrorType RS485_Send(uint8_t* data, uint8_t len);
 
-static inline void RS485_Receive(uint8_t* result, uint8_t len);
+static inline RS485ErrorType RS485_Receive(uint8_t* result, uint8_t len);
 
 /******** Internal function implementation ********/
 
-static inline void RS485_Send(uint8_t* data, uint8_t len) {
+static inline RS485ErrorType RS485_Send(uint8_t* data, uint8_t len) {
   RS485_DE_SetVal(RS485State.dePtr);
   RS485_RE_SetVal(RS485State.rePtr);
-  RS485_UART_SendBlock(RS485State.uartPtr, data, len);
+  if(RS485_UART_SendBlock(RS485State.uartPtr, data, len) == ERR_OK) {
+	  return RS485_OK;
+  } else {
+	  return RS485_ERR;
+  }
 }
 
-static inline void RS485_Receive(uint8_t* result, uint8_t len) {
-  RS485_UART_ReceiveBlock(RS485State.uartPtr, result, len);
+static inline RS485ErrorType RS485_Receive(uint8_t* result, uint8_t len) {
+  if(RS485_UART_ReceiveBlock(RS485State.uartPtr, result, len) == ERR_OK) {
+	  return RS485_OK;
+  } else {
+	  return RS485_ERR;
+  }
 }
 
 /******** Public function implementation ********/
@@ -58,35 +66,39 @@ void RS485_Init() {
   RS485_Read(&RS485RcvChar, 1U, RS485_User_NONE);
 }
 
-void RS485_Read(uint8_t* result, uint8_t len, RS485UserType user) {
+RS485ErrorType RS485_Read(uint8_t* result, uint8_t len, RS485UserType user) {
   while((RS485State.user | user) != user) {
     RTOS_DELAY_MINIUM();
   }
   RS485State.user = user;
 /* Receive InpData (1 byte) from the I2C bus and generates a stop condition to end transmission */
-  RS485_Receive(result, len);
+  return RS485_Receive(result, len);
 }
 
-void RS485_Write(uint8_t* data, uint8_t len, RS485UserType user) {
+RS485ErrorType RS485_Write(uint8_t* data, uint8_t len, RS485UserType user) {
   while((RS485State.user | user) != user) {
     RTOS_DELAY_MINIUM();
   }
   RS485State.user = user;
   /* Send */
-  RS485_Send(data, len);
+  return RS485_Send(data, len);
 }
 
-RS485ResponseType RS485_WaitForResponse(uint32_t timeoutTicks) {
-  RS485ResponseType resType;
+RS485ErrorType RS485_WaitForResponse(uint32_t timeoutTicks) {
+  RS485ErrorType resType;
+  uint_32 ret;
 
   _lwevent_clear(&RS485State.lwevent_RS485Rx, 0xFFFFFFFF);
   if (_lwevent_wait_ticks(&RS485State.lwevent_RS485Rx, 0xFFFFFFFF, FALSE, timeoutTicks) == LWEVENT_WAIT_TIMEOUT) {
     //time_out
     resType = RS485_TIMEOUT;
   } else {
-    if (RS485State.lwevent_RS485Rx.VALUE == 0x01) {
+    if (RS485State.lwevent_RS485Rx.VALUE == RS485_Frame_DONE) {
       //success
       resType = RS485_OK;
+    } else if (RS485State.lwevent_RS485Rx.VALUE == RS485_Frame_ERR_MODE){
+      // need reset
+      resType = RS485_ERR_MODE;
     } else {
       //Checksum error
       resType = RS485_ERR;
@@ -98,12 +110,9 @@ RS485ResponseType RS485_WaitForResponse(uint32_t timeoutTicks) {
   return resType;
 }
 
-RS485UserType RS485_GetUser() {
-  return RS485State.user;
-}
-
 void RS485_OnBlockRx() {
   RS485FrameStateType ret;
+  static uint8_t errorCounter = 0;
 
   switch(RS485State.user) {
 	  case RS485_User_NONE:
@@ -113,7 +122,7 @@ void RS485_OnBlockRx() {
   		ret = MX28R_FrameComposer(RS485RcvChar);
   		break;
   	  case RS485_User_CM:
-		ret = crrntMtr_FrameComposer(RS485RcvChar);
+		ret = AE12AE_FrameComposer(RS485RcvChar);
   		break;
   	  default:
   		ret = RS485_Frame_ERR;

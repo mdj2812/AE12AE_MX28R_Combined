@@ -9,6 +9,8 @@
 #define RS485_DRIVER_H_
 
 #include "stdint.h"
+#include "mqx_inc.h"
+
 /******** Public macros ********/
 
 #define         BIT0                    0x01
@@ -21,19 +23,32 @@
 #define         BIT7                    0x80
 
 #define         RTOS_DELAY_MINIUM()     _time_delay_ticks(1)
+#define         RTOS_DELAY_TICKS(x)     _time_delay_ticks(x)
+
+#define 		TRUE 					((boolean)1)
+#define 		FALSE 					((boolean)0)
 
 #define			DEBUG
+
 /******** Public types ********/
 typedef enum {
-	RS485_User_NONE = 0, RS485_User_SERVO = BIT0, RS485_User_CM = BIT1
+	RS485_User_NONE 	= 0,
+	RS485_User_SERVO 	= BIT0,
+	RS485_User_CM 		= BIT1
 } RS485UserType;
 
 typedef enum {
-	RS485_OK, RS485_ERR, RS485_TIMEOUT
-} RS485ResponseType;
+	RS485_OK,
+	RS485_ERR,
+	RS485_TIMEOUT,
+	RS485_ERR_MODE
+} RS485ErrorType;
 
 typedef enum {
-	RS485_Frame_WORKING = 0, RS485_Frame_DONE = BIT0, RS485_Frame_ERR = BIT1
+	RS485_Frame_WORKING 	= 0,
+	RS485_Frame_DONE 		= BIT0,
+	RS485_Frame_ERR 		= BIT1,
+	RS485_Frame_ERR_MODE 	= BIT2
 } RS485FrameStateType;
 
 /******** Public variables ********/
@@ -42,13 +57,11 @@ typedef enum {
 
 void RS485_Init();
 
-void RS485_Read(uint8_t* result, uint8_t len, RS485UserType user);
+RS485ErrorType RS485_Read(uint8_t* result, uint8_t len, RS485UserType user);
 
-void RS485_Write(uint8_t* data, uint8_t len, RS485UserType user);
+RS485ErrorType RS485_Write(uint8_t* data, uint8_t len, RS485UserType user);
 
-RS485ResponseType RS485_WaitForResponse(uint32_t timeoutTicks);
-
-RS485UserType RS485_GetUser();
+RS485ErrorType RS485_WaitForResponse(uint32_t timeoutTicks);
 
 void RS485_OnBlockRx();
 

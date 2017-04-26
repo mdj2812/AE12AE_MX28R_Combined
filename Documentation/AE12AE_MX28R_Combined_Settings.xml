@@ -454,10 +454,10 @@
               <Name v="MX28R_Set_Task" />
               <Entry_point_function v="MX28R_Set_task" />
               <Stack_size v="512" />
-              <Priority v="1" />
+              <Priority v="9" />
               <Creation_parameter v="0" />
               <group name="Attributes">
-                <MQX_AUTO_START_TASK v="Enabled" />
+                <MQX_AUTO_START_TASK v="Disabled" />
                 <MQX_FLOATING_POINT_TASK v="Disabled" />
               </group>
             </Properties>
@@ -503,7 +503,7 @@
         <group name="Components">
           <Lightweight_Semaphores v="yes" />
           <Lightweight_Events v="yes" />
-          <Lightweight_Message_Queues v="no" />
+          <Lightweight_Message_Queues v="yes" />
           <Mutexes v="no" />
           <Lightweight_Timer v="no" />
           <Kernel_Logging v="no" />

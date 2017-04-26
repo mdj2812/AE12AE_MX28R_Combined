@@ -12,7 +12,6 @@
  * Includes
  ******************************************************************************/
 #include "stdint.h"
-#include "psptypes.h"
 #include "RS485_Driver.h"
 
 /*******************************************************************************
@@ -35,26 +34,6 @@ typedef enum {
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
-void thtlServoInit();
-
-void MX28R_GetCheckSum(uint8_t * array);
-
-uint8_t MX28R_SetGoalPosition(uint16_t pos);
-
-uint8_t MX28R_SetThrottlePercent(uint8_t percent);
-
-uint8_t MX28R_Read(uint8_t StartAddr, uint8_t * Value, uint8_t Length);
-
-uint8_t MX28R_Write(uint8_t StartAddr, uint8_t * Value, uint8_t Length);
-
-uint8_t MX28R_Reset();
-
-void MX28R_GetActualSpeed(uint16_t* speed);
-
-void MX28R_GetActualPosition(uint16_t* pos);
-
-void MX28R_Calibration(uint16_t * low, uint16_t * high);
-
 void MX28R_set_task();
 
 RS485FrameStateType MX28R_FrameComposer(uint8_t thtlRcvChar);

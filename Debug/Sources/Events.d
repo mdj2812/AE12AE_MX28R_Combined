@@ -38,6 +38,7 @@ Sources/Events.o: ../Sources/Events.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwsem.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwevent.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cnfg.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwmsgq.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpudef.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cpudef.h \
@@ -86,7 +87,24 @@ Sources/Events.o: ../Sources/Events.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/VREF_PDD.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/WDOG_PDD.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h \
- C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_inc.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/PE_LDD.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_DE.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_RE.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/ALIM_12V_RLY.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_UART.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/MQX1.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psplite.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psptypes.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_ticks.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_comp.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/compiler/cwgcc/comp.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_comp.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_prv.h
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/Cpu.h:
 
@@ -165,6 +183,8 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwsem.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwevent.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_cnfg.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/lwmsgq.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h:
 
@@ -263,3 +283,37 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/WDOG_PDD.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqx_inc.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/PE_LDD.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_DE.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_RE.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/ALIM_12V_RLY.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_UART.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/MQX1.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psplite.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psptypes.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_ticks.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_comp.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/compiler/cwgcc/comp.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_cpu.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_comp.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psp_prv.h:
