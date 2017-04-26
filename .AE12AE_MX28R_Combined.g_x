@@ -54,7 +54,7 @@
       <File Name="MQXLITE/kernel/lwtimer.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735692" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/include/lwlog_prv.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735214" FileType="16384" CompNumb="10" />
       <File Name="Static_Code/PDD/SPI_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953994" FileType="1048576" />
-      <File Name="Documentation/AE12AE_MX28R_Combined_Settings.xml" FileDate="2017-04-25, 10:56:05" FileAge="1493110565740" FileType="3072" />
+      <File Name="Documentation/AE12AE_MX28R_Combined_Settings.xml" FileDate="2017-04-26, 11:48:50" FileAge="1493200130690" FileType="3072" />
       <File Name="Static_Code/PDD/FMC_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953790" FileType="1048576" />
       <File Name="MQXLITE/psp/cortex_m/mem_zero.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735972" FileType="16384" CompNumb="10" />
       <File Name="Project_Settings/Linker_Files/ProcessorExpert.ld" FileDate="2017-04-25, 10:25:39" FileAge="1493108739342" FileType="8" CompNumb="4" />
@@ -64,7 +64,7 @@
       <File Name="Sources/mqx_tasks.h" FileDate="2017-04-25, 10:30:34" FileAge="1493109034930" FileType="131328" />
       <File Name="Static_Code/PDD/USBDCD_PDD.h" FileDate="2017-04-25, 10:12:34" FileAge="1493107954063" FileType="1048576" />
       <File Name="MQXLITE/kernel/lwsem.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735676" FileType="16384" CompNumb="10" />
-      <File Name="Sources/mqx_tasks.c" FileDate="2017-04-25, 15:39:05" FileAge="1493127545272" FileType="131328" />
+      <File Name="Sources/mqx_tasks.c" FileDate="2017-04-25, 16:30:43" FileAge="1493130643108" FileType="131328" />
       <File Name="MQXLITE/psp/cortex_m/psp_tiad.c" FileDate="2017-04-25, 10:25:36" FileAge="1493108736113" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/include/mutex_prv.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735481" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/stack_bu.c" FileDate="2017-04-25, 10:25:36" FileAge="1493108736193" FileType="16384" CompNumb="10" />
@@ -76,7 +76,7 @@
       <File Name="MQXLITE/include/lwsem_prv.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735297" FileType="16384" CompNumb="10" />
       <File Name="Documentation/AE12AE_MX28R_Combined.txt" FileDate="2017-04-25, 10:25:39" FileAge="1493108739946" FileType="3072" />
       <File Name="MQXLITE/psp/cortex_m/int_gkis.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735865" FileType="16384" CompNumb="10" />
-      <File Name="Generated_Code/MQX1.h" FileDate="2017-04-25, 10:28:54" FileAge="1493108934242" FileType="45637" CompNumb="10" />
+      <File Name="Generated_Code/MQX1.h" FileDate="2017-04-26, 11:48:50" FileAge="1493200130453" FileType="45637" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/types.inc" FileDate="2017-04-25, 10:25:36" FileAge="1493108736231" FileType="16384" CompNumb="10" />
       <File Name="Static_Code/PDD/CAN_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953701" FileType="1048576" />
       <File Name="Generated_Code/MQX1.c" FileDate="2017-04-25, 10:28:54" FileAge="1493108934273" FileType="45637" CompNumb="10" />
@@ -87,7 +87,7 @@
       <File Name="Static_Code/PDD/VREF_PDD.h" FileDate="2017-04-25, 10:12:34" FileAge="1493107954083" FileType="1048576" />
       <File Name="MQXLITE/psp/cortex_m/psp_ticks.h" FileDate="2017-04-25, 10:25:36" FileAge="1493108736125" FileType="16384" CompNumb="10" />
       <File Name="Static_Code/PDD/MCG_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953856" FileType="1048576" />
-      <File Name="MQXLITE/config/task_template_list.c" FileDate="2017-04-25, 10:30:34" FileAge="1493109034914" FileType="45637" CompNumb="10" />
+      <File Name="MQXLITE/config/task_template_list.c" FileDate="2017-04-26, 11:48:50" FileAge="1493200130485" FileType="45637" CompNumb="10" />
       <File Name="Documentation/doxygen/RoutingReport_component.txt" FileDate="2017-04-25, 10:23:03" FileAge="1493108583913" FileType="45637" CompNumb="4" />
       <File Name="MQXLITE/psp/cortex_m/psp_tipr.c" FileDate="2017-04-25, 10:25:36" FileAge="1493108736152" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/kernel/mqxlite.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735709" FileType="16384" CompNumb="10" />
@@ -119,7 +119,7 @@
       <File Name="MQXLITE/include/lwmem.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735230" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/int_vtab.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735931" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/kernel/klog.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735582" FileType="16384" CompNumb="10" />
-      <File Name="Generated_Code/CPU_Config.h" FileDate="2017-04-25, 16:12:38" FileAge="1493129558543" FileType="45637" CompNumb="4" />
+      <File Name="Generated_Code/CPU_Config.h" FileDate="2017-04-26, 11:48:49" FileAge="1493200129135" FileType="45637" CompNumb="4" />
       <File Name="Generated_Code/Pins1.h" FileDate="2017-04-25, 10:23:03" FileAge="1493108583798" FileType="45637" CompNumb="5" />
       <File Name="MQXLITE/psp/cortex_m/int_kisr.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735892" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/psp_cpudef.h" FileDate="2017-04-25, 10:25:36" FileAge="1493108736036" FileType="16384" CompNumb="10" />
@@ -188,7 +188,7 @@
       <File Name="Static_Code/System/Peripherals_Init.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953525" FileType="1048576" CompNumb="4" />
       <File Name="Static_Code/System/Peripherals_Init.c" FileDate="2017-04-25, 10:12:33" FileAge="1493107953521" FileType="1048576" CompNumb="4" />
       <File Name="Static_Code/PDD/CMP_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953712" FileType="1048576" />
-      <File Name="ProjectInfo.xml" FileDate="2017-04-25, 15:19:37" FileAge="1493126377280" FileType="45637" />
+      <File Name="ProjectInfo.xml" FileDate="2017-04-26, 11:36:25" FileAge="1493199385811" FileType="45637" />
       <File Name="Generated_Code/RS485_DE.h" FileDate="2017-04-25, 10:23:03" FileAge="1493108583767" FileType="45637" CompNumb="6" />
       <File Name="MQXLITE/kernel/lwmem.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735638" FileType="16384" CompNumb="10" />
       <File Name="Static_Code/PDD/DAC_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953740" FileType="1048576" />
@@ -198,13 +198,13 @@
       <File Name="MQXLITE/psp/cortex_m/int_xcpt.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735945" FileType="16384" CompNumb="10" />
       <File Name="Generated_Code/RS485_RE.h" FileDate="2017-04-25, 10:23:03" FileAge="1493108583736" FileType="45637" CompNumb="7" />
       <File Name="Generated_Code/RS485_RE.c" FileDate="2017-04-25, 10:25:39" FileAge="1493108739137" FileType="45637" CompNumb="7" />
-      <File Name="Project_Settings/Debugger/MQXDeviceDescription.tad" FileDate="2017-04-25, 10:25:38" FileAge="1493108738946" FileType="45637" CompNumb="10" />
       <File Name="Generated_Code/Cpu.h" FileDate="2017-04-25, 10:25:39" FileAge="1493108739263" FileType="45637" CompNumb="4" />
+      <File Name="Project_Settings/Debugger/MQXDeviceDescription.tad" FileDate="2017-04-25, 10:25:38" FileAge="1493108738946" FileType="45637" CompNumb="10" />
       <File Name="Static_Code/PDD/SIM_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953975" FileType="1048576" />
       <File Name="Generated_Code/Cpu.c" FileDate="2017-04-25, 10:25:39" FileAge="1493108739313" FileType="45637" CompNumb="4" />
       <File Name="Documentation/doxygen/AE12AE_MX28R_Combined_project.txt" FileDate="2017-04-25, 10:25:39" FileAge="1493108739376" FileType="45637" CompNumb="4" />
-      <File Name="Project_Settings/Startup_Code/startup.c" FileDate="2017-04-25, 10:12:33" FileAge="1493107953159" FileType="16384" CompNumb="4" />
       <File Name="Static_Code/PDD/ENET_PDD.h" FileDate="2017-04-25, 10:12:33" FileAge="1493107953771" FileType="1048576" />
+      <File Name="Project_Settings/Startup_Code/startup.c" FileDate="2017-04-25, 10:12:33" FileAge="1493107953159" FileType="16384" CompNumb="4" />
       <File Name="MQXLITE/kernel/mqx_utils.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735725" FileType="16384" CompNumb="10" />
       <File Name="Generated_Code/ALIM_12V_RLY.h" FileDate="2017-04-25, 10:56:05" FileAge="1493110565426" FileType="45637" CompNumb="8" />
       <File Name="MQXLITE/kernel/lwevent.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735604" FileType="16384" CompNumb="10" />
@@ -214,13 +214,13 @@
       <File Name="MQXLITE/kernel/lwmsgq.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735657" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/int_pvta.c" FileDate="2017-04-25, 10:25:35" FileAge="1493108735904" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/include/lwevent_prv.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735183" FileType="16384" CompNumb="10" />
-      <File Name="Generated_Code/PE_Error.h" FileDate="2017-04-25, 10:12:34" FileAge="1493107954273" FileType="45637" />
       <File Name="Static_Code/PDD/SysTick_PDD.h" FileDate="2017-04-25, 10:12:34" FileAge="1493107954043" FileType="1048576" />
+      <File Name="Generated_Code/PE_Error.h" FileDate="2017-04-25, 10:12:34" FileAge="1493107954273" FileType="45637" />
       <File Name="MQXLITE/include/klog.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735130" FileType="16384" CompNumb="10" />
-      <File Name="MQXLITE/include/mqx_cnfg.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735399" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/include/mqxlite.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735342" FileType="16384" CompNumb="10" />
+      <File Name="MQXLITE/include/mqx_cnfg.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735399" FileType="16384" CompNumb="10" />
       <File Name="MQXLITE/psp/cortex_m/psplite.h" FileDate="2017-04-25, 10:25:35" FileAge="1493108735984" FileType="16384" CompNumb="10" />
     </GeneratedByPE>
   </GeneratedFilesList>
-  <CodeGenReference>9</CodeGenReference>
+  <CodeGenReference>11</CodeGenReference>
 </CodeGenerationInfo>

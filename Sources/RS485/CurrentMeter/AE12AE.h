@@ -18,6 +18,7 @@
 #include "Init_Config.h"
 #include "PDD_Includes.h"
 #include "Cpu.h"
+#include "RS485_Driver.h"
 
 /*******************************************************************************
  * Definitions
@@ -52,7 +53,7 @@ uint8_t crrntMtr_Read(uint8_t id, uint8_t * Value);
 
 uint8_t crrntMtr_Write(uint8_t id, uint8_t StartAddr, uint8_t Value);
 
-boolean crrntMtrR_OnCharReceived(uint8_t crrntMtrRcvChar);
+RS485FrameStateType crrntMtr_FrameComposer(uint8_t crrntMtrRcvChar);
 
 void CurrentMeter_task();
 #endif /* SOURCES_AE12AE_H_ */

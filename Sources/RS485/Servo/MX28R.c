@@ -88,7 +88,7 @@ uint8_t MX28R_SetGoalPosition(uint16_t pos) {
   TxData[6] = pos & 0xff;
   TxData[7] = (pos & 0xff00) >> 8;
   MX28R_GetCheckSum(TxData); // data8
-  RS485_Write(TxData, 9U, RS485_Servo);
+  RS485_Write(TxData, 9U, RS485_User_SERVO);
 
   return RS485_OK == RS485_WaitForResponse(200);
 }
@@ -107,7 +107,7 @@ uint8_t MX28R_Read(uint8_t StartAddr, uint8_t * Value, uint8_t Length) {
   TxData[5] = StartAddr;
   TxData[6] = Length;
   MX28R_GetCheckSum(TxData);
-  RS485_Write(TxData, 8U, RS485_Servo);
+  RS485_Write(TxData, 8U, RS485_User_SERVO);
 
   if (RS485_WaitForResponse(200) == RS485_OK) {
     for (i = 0; i < Length; i++) {
@@ -130,7 +130,7 @@ uint8_t MX28R_Write(uint8_t StartAddr, uint8_t * Value, uint8_t Length) {
   for (i = 0; i < Length; i++)
     TxData[6 + i] = Value[i];
   MX28R_GetCheckSum(TxData);
-  RS485_Write(TxData, Length + 7, RS485_Servo);
+  RS485_Write(TxData, Length + 7, RS485_User_SERVO);
 
   return RS485_OK == RS485_WaitForResponse(200);
 }
@@ -143,16 +143,16 @@ uint8_t MX28R_Reset() {
   TxData[3] = 0x02;
   TxData[4] = 0x06;
   MX28R_GetCheckSum(TxData);
-  RS485_Write(TxData, 6, RS485_Servo);
+  RS485_Write(TxData, 6, RS485_User_SERVO);
 
   return RS485_OK == RS485_WaitForResponse(200);
 }
 
-uint8_t MX28R_GetActualSpeed(uint16_t* speed) {
+void MX28R_GetActualSpeed(uint16_t* speed) {
   MX28R_Read(0x26, (uint8_t*)speed, 2);
 }
 
-uint8_t MX28R_GetActualPosition(uint16_t* pos) {
+void MX28R_GetActualPosition(uint16_t* pos) {
   MX28R_Read(0x24, (uint8_t*)pos, 2);
 }
 
@@ -247,7 +247,7 @@ void MX28R_set_task() {
   }
 }
 
-boolean MX28R_OnCharReceived(uint8_t thtlRcvChar) {
+RS485FrameStateType MX28R_FrameComposer(uint8_t thtlRcvChar) {
   /* Return packet format */
   /* 0xFF 0xFF ID LEN ERROR PARA... CHECKSUM */
   /* Initialization */
@@ -295,12 +295,12 @@ boolean MX28R_OnCharReceived(uint8_t thtlRcvChar) {
             checksum = 0;
             error = 0;
 
-            return TRUE;
+            return RS485_Frame_DONE;
         } else {
             checksum = 0;
             error = 0;
 
-            return FALSE;
+            return RS485_Frame_ERR;
         }
       }
       break;
@@ -308,7 +308,7 @@ boolean MX28R_OnCharReceived(uint8_t thtlRcvChar) {
     break;
   }
 
-  return FALSE;
+  return RS485_Frame_WORKING;
 }
 
 void MX28R_SetAndWaitGoalPos(uint16_t targetPos) {

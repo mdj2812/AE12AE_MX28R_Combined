@@ -22,14 +22,19 @@
 
 #define         RTOS_DELAY_MINIUM()     _time_delay_ticks(1)
 
+#define			DEBUG
 /******** Public types ********/
 typedef enum {
-	RS485_None = 0x00, RS485_Servo = 0x01, RS485_CurrentMeter = 0x10
+	RS485_User_NONE = 0, RS485_User_SERVO = BIT0, RS485_User_CM = BIT1
 } RS485UserType;
 
 typedef enum {
 	RS485_OK, RS485_ERR, RS485_TIMEOUT
 } RS485ResponseType;
+
+typedef enum {
+	RS485_Frame_WORKING = 0, RS485_Frame_DONE = BIT0, RS485_Frame_ERR = BIT1
+} RS485FrameStateType;
 
 /******** Public variables ********/
 

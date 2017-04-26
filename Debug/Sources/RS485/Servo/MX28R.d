@@ -1,6 +1,7 @@
 Sources/RS485/Servo/MX28R.o: ../Sources/RS485/Servo/MX28R.c \
  ../Sources/RS485/Servo/MX28R.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psptypes.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_DE.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/PE_Types.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/PE_Error.h \
@@ -44,12 +45,13 @@ Sources/RS485/Servo/MX28R.o: ../Sources/RS485/Servo/MX28R.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/kinetis.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/cortex.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h \
- C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/SystemTimer1.h \
- C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/SystemTimer1.h
 
 ../Sources/RS485/Servo/MX28R.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/psptypes.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/RS485_DE.h:
 
@@ -138,5 +140,3 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/psp/cortex_m/cortex.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/SystemTimer1.h:
-
-C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h:

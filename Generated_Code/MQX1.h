@@ -6,7 +6,7 @@
 **     Version     : Component 01.110, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-04-25, 10:28, # CodeGen: 3
+**     Date/Time   : 2017-04-26, 11:48, # CodeGen: 10
 **     Abstract    :
 **         MQX Lite RTOS Adapter component.
 **     Settings    :
@@ -128,7 +128,7 @@ extern INTERRUPT_TABLE_STRUCT          mqx_static_isr_table[MQX_INTERRUPT_TABLE_
 
 
 /* Task ready queue */
-#define MQX_IDLE_TASK_PRIORITY         (10)
+#define MQX_IDLE_TASK_PRIORITY         (9)
 #define MQX_READY_QUEUE_ITEMS          (MQX_IDLE_TASK_PRIORITY + 1)
 extern READY_Q_STRUCT                  mqx_static_ready_queue[MQX_READY_QUEUE_ITEMS];
 

@@ -86,6 +86,7 @@ Sources/mqx_tasks.o: ../Sources/mqx_tasks.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/VREF_PDD.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/WDOG_PDD.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/CurrentMeter/AE12AE.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/Events.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/mqx_tasks.h
@@ -263,6 +264,8 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/VREF_PDD.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Static_Code/PDD/WDOG_PDD.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/CurrentMeter/AE12AE.h:
 

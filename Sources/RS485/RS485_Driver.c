@@ -25,7 +25,7 @@ typedef struct {
 /******** Internal variables ********/
 
 static RS485_Type_State RS485State = {
-    NULL, NULL, NULL, RS485_None, NULL
+    NULL, NULL, NULL, RS485_User_NONE, NULL
 };
 static uint8_t RS485RcvChar;
 
@@ -55,7 +55,7 @@ void RS485_Init() {
   RS485State.rePtr = RS485_RE_Init(NULL);
   _lwevent_create(&RS485State.lwevent_RS485Rx, 0);
 
-  RS485_Read(&RS485RcvChar, 1U, RS485_None);
+  RS485_Read(&RS485RcvChar, 1U, RS485_User_NONE);
 }
 
 void RS485_Read(uint8_t* result, uint8_t len, RS485UserType user) {
@@ -93,7 +93,7 @@ RS485ResponseType RS485_WaitForResponse(uint32_t timeoutTicks) {
     }
   }
   _lwevent_clear(&RS485State.lwevent_RS485Rx, 0xFFFFFFFF);
-  RS485State.user = RS485_None;
+  RS485State.user = RS485_User_NONE;
 
   return resType;
 }
@@ -103,19 +103,25 @@ RS485UserType RS485_GetUser() {
 }
 
 void RS485_OnBlockRx() {
+  RS485FrameStateType ret;
+
   switch(RS485State.user) {
-  	  case RS485_Servo:
-  		if(MX28R_OnCharReceived(RS485RcvChar)) {
-  	        _lwevent_set(&RS485State.lwevent_RS485Rx, 0x01);
-  		}
+	  case RS485_User_NONE:
+		ret = RS485_Frame_WORKING;
+		break;
+  	  case RS485_User_SERVO:
+  		ret = MX28R_FrameComposer(RS485RcvChar);
   		break;
-  	  case RS485_CurrentMeter:
-  		if(crrntMtrR_OnCharReceived(RS485RcvChar)) {
-  	        _lwevent_set(&RS485State.lwevent_RS485Rx, 0x01);
-  		}
+  	  case RS485_User_CM:
+		ret = crrntMtr_FrameComposer(RS485RcvChar);
   		break;
   	  default:
+  		ret = RS485_Frame_ERR;
   		break;
+  }
+
+  if(ret) {
+	  _lwevent_set(&RS485State.lwevent_RS485Rx, ret);
   }
 
   RS485_Read(&RS485RcvChar, 1U, RS485State.user);

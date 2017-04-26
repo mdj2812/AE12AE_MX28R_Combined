@@ -32,7 +32,7 @@ uint8_t crrntMtr_Read(uint8_t id, uint8_t * Value) {
   TxData[2] = 0xD0;
   TxData[3] = 0x04; //Acquisition of measurement
   crrntMtr_GetCheckSum(TxData);
-  RS485_Write(TxData, 5U, RS485_CurrentMeter);
+  RS485_Write(TxData, 5U, RS485_User_CM);
 
   if(RS485_WaitForResponse(100) == RS485_OK) {
     for(i = 0; i < 5; i++) {
@@ -51,12 +51,12 @@ uint8_t crrntMtr_Write(uint8_t id, uint8_t StartAddr, uint8_t Value) {
   TxData[2] = StartAddr;
   TxData[3] = Value;
   crrntMtr_GetCheckSum(TxData);
-  RS485_Write(TxData, 5U, RS485_CurrentMeter);
+  RS485_Write(TxData, 5U, RS485_User_CM);
 
   return 1;
 }
 
-boolean crrntMtrR_OnCharReceived(uint8_t crrntMtrRcvChar) {
+RS485FrameStateType crrntMtr_FrameComposer(uint8_t crrntMtrRcvChar) {
   static uint8_t i = 0;
   static uint16_t checksum = 0;
   static uint8_t id = 0;
@@ -92,12 +92,14 @@ boolean crrntMtrR_OnCharReceived(uint8_t crrntMtrRcvChar) {
 			i = 0;
 			checksum = 0;
 			HeaderState = CRRNTMTR_COMM_HEADER_NOT_DETECTED;
-			return TRUE;
+
+			return RS485_Frame_DONE;
 		} else {
 			i = 0;
 			checksum = 0;
 			HeaderState = CRRNTMTR_COMM_HEADER_NOT_DETECTED;
-			return FALSE;
+
+			return RS485_Frame_ERR;
 		}
 		break;
 	default:
@@ -105,7 +107,7 @@ boolean crrntMtrR_OnCharReceived(uint8_t crrntMtrRcvChar) {
 	}
 	break;
   }
-  return FALSE;
+  return RS485_Frame_WORKING;
 }
 
 void CurrentMeter_task() {
@@ -130,10 +132,11 @@ void CurrentMeter_task() {
   while(1) {
 	/* Write your code here ... */
 	crrntMtr_Read(0x04, &RX_Buffer[RX_Cursor]);
+#ifdef DEBUG
 	value = (RX_Buffer[2]<<8 | RX_Buffer[3]);
 	sprintf(str, "%d\n", value);
-
 	SEGGER_RTT_WriteString(0, str);
+#endif
 	_time_delay_ticks(200);
   }
 }

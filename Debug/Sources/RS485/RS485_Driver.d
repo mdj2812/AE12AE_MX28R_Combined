@@ -46,6 +46,7 @@ Sources/RS485/RS485_Driver.o: ../Sources/RS485/RS485_Driver.c \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/SystemTimer1.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h \
+ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/CurrentMeter/AE12AE.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/mqx_tasks.h \
  C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/Init_Config.h \
@@ -182,6 +183,8 @@ C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/MQXLITE/include/mqxlite_prv.h:
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Generated_Code/SystemTimer1.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/Servo/MX28R.h:
+
+C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/RS485_Driver.h:
 
 C:/Users/MA/workspace.kds/AE12AE_MX28R_Combined/Sources/RS485/CurrentMeter/AE12AE.h:
 

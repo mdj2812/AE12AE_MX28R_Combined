@@ -3,7 +3,7 @@
   <Header>
     <Name>AE12AE_MX28R_Combined</Name>
     <SavedBy>MA</SavedBy>
-    <ModificationStamp>6</ModificationStamp>
+    <ModificationStamp>7</ModificationStamp>
     <Date>2017-04-25</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.12.2.RT7_b1550-0615</PEversion>
@@ -23377,7 +23377,7 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Value>8</Value>
+              <Value>1</Value>
               <Base>DEC</Base>
             </ItemState>
             <ItemState>
@@ -23524,7 +23524,7 @@
               <ReadOnly>false</ReadOnly>
               <UserReadOnly>false</UserReadOnly>
               <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-              <Value>9</Value>
+              <Value>8</Value>
               <Base>DEC</Base>
             </ItemState>
             <ItemState>

@@ -6,7 +6,7 @@
 **     Version     : Component 01.110, Driver 01.00, CPU db: 3.00.000
 **     Repository  : Kinetis
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-04-25, 10:30, # CodeGen: 4
+**     Date/Time   : 2017-04-26, 11:48, # CodeGen: 10
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -61,7 +61,7 @@ const TASK_TEMPLATE_STRUCT MQX_template_list[] =
   /* Task number                      */  MX28R_SET_TASK_TASK,
   /* Entry point                      */  (TASK_FPTR)MX28R_Set_task,
   /* Stack size                       */  MX28R_SET_TASK_TASK_STACK_SIZE,
-  /* Task priority                    */  8U,
+  /* Task priority                    */  1U,
   /* Task name                        */  "mx28r_set_task",
   /* Task attributes                  */  (MQX_AUTO_START_TASK),
   /* Task parameter                   */  (uint32_t)(0)
@@ -71,7 +71,7 @@ const TASK_TEMPLATE_STRUCT MQX_template_list[] =
   /* Task number                      */  AE12AE_DEMADE_TASK_TASK,
   /* Entry point                      */  (TASK_FPTR)AE12AE_Demade_task,
   /* Stack size                       */  AE12AE_DEMADE_TASK_TASK_STACK_SIZE,
-  /* Task priority                    */  9U,
+  /* Task priority                    */  8U,
   /* Task name                        */  "ae12ae_demade_task",
   /* Task attributes                  */  (MQX_AUTO_START_TASK),
   /* Task parameter                   */  (uint32_t)(0)

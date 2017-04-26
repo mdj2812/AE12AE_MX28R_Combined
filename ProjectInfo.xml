@@ -60,6 +60,7 @@
       <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\CurrentMeter\</Path>
       <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\</Path>
       <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\Servo\</Path>
+      <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RTT\</Path>
       <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Static_Code\System\</Path>
       <Path>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\MQXLITE\psp\cortex_m\core\M4\</Path>
     </SourceCodePaths>
@@ -116,6 +117,8 @@
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\CurrentMeter\AE12AE.c</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\RS485_Driver.c</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\Servo\MX28R.c</PathName>
+      <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RTT\SEGGER_RTT.c</PathName>
+      <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RTT\SEGGER_RTT_printf.c</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\main.c</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\mqx_tasks.c</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Static_Code\System\CPU_Init.c</PathName>
@@ -182,6 +185,8 @@
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\CurrentMeter\AE12AE.h</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\RS485_Driver.h</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RS485\Servo\MX28R.h</PathName>
+      <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RTT\SEGGER_RTT.h</PathName>
+      <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\RTT\SEGGER_RTT_Conf.h</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Sources\mqx_tasks.h</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Static_Code\IO_Map\MK64F12.h</PathName>
       <PathName>C:\Users\MA\workspace.kds\AE12AE_MX28R_Combined\Static_Code\PDD\ADC_PDD.h</PathName>

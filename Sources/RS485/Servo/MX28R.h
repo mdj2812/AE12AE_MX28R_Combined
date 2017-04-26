@@ -13,6 +13,7 @@
  ******************************************************************************/
 #include "stdint.h"
 #include "psptypes.h"
+#include "RS485_Driver.h"
 
 /*******************************************************************************
  * Definitions
@@ -48,14 +49,14 @@ uint8_t MX28R_Write(uint8_t StartAddr, uint8_t * Value, uint8_t Length);
 
 uint8_t MX28R_Reset();
 
-uint8_t MX28R_GetActualSpeed(uint16_t* speed);
+void MX28R_GetActualSpeed(uint16_t* speed);
 
-uint8_t MX28R_GetActualPosition(uint16_t* pos);
+void MX28R_GetActualPosition(uint16_t* pos);
 
 void MX28R_Calibration(uint16_t * low, uint16_t * high);
 
 void MX28R_set_task();
 
-boolean MX28R_OnCharReceived(uint8_t thtlRcvChar);
+RS485FrameStateType MX28R_FrameComposer(uint8_t thtlRcvChar);
 
 #endif /* SOURCES_MX28R_H_ */
